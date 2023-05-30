@@ -13,10 +13,10 @@ const FormComponent = () => {
     const edit = useSelector((state)=>state.editReducer.edit)
     const productReducer = useSelector((state)=>state.productReducer.product)
     
-    const [product, setProduct] = useState({title:"", description:"", price:"", category:""})
+    const [product, setProduct] = useState({title:"", description:"", price:"", category:"", selectedFile:""})
 
     useEffect(()=> {
-      edit ? setProduct(productReducer) : setProduct({title:"", description:"", price:"", category:""})
+      edit ? setProduct(productReducer) : setProduct({title:"", description:"", price:"", category:"", selectedFile:""})
     }, [edit, productReducer])
 
     const handleChange = (e) => {

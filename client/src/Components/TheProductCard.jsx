@@ -15,6 +15,7 @@ const TheProductCard = ({product}) => {
   const editTrue = () => dispatch(toggleTrue());
 
   const isAuth = useSelector(state=>state.authReducer.isAuth);
+  const userAuth = useSelector(state=>state.authReducer.user)
   
   return (
     <div>
@@ -25,12 +26,12 @@ const TheProductCard = ({product}) => {
         <Card.Text>{product.description}</Card.Text>
         <Card.Text>Price : {product.price}$</Card.Text>
         <Card.Text>Category : {product.category}</Card.Text>
-        <Button variant="primary">Buy</Button>
+        {userAuth.role == "admin" ? <></> : <Button variant="primary" style={{margin:"10px"}}>Buy</Button>}
         {
-          isAuth ? 
+          userAuth.role == "admin" ? 
           <>
-          <Link to={`/edit/${product._id}`}><Button variant="primary" onClick={()=>{getProduct(product._id); editTrue()}}>Edit</Button></Link>
-          <Button variant="primary" onClick={()=>delProduct(product._id)}>Delete</Button>
+          <Link to={`/edit/${product._id}`}><Button style={{margin:"10px"}} variant="success" onClick={()=>{getProduct(product._id); editTrue()}}>Edit</Button></Link>
+          <Button style={{margin:"10px"}} variant="danger" onClick={()=>delProduct(product._id)}>Delete</Button>
           </>
           : 
           <></>

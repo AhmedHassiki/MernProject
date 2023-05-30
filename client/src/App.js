@@ -40,8 +40,8 @@ useEffect(()=>{
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-              <Link to="/"><Button>Home</Button></Link>
-              <Link to="/add"><Button onClick={editFalse}>Add</Button></Link>
+              <Link to="/"><Button className="border-0 bg-transparent" variant="none" style={{color: "white"}}>Home</Button></Link>
+              {userAuth.role == "admin" ? (<Link to="/add"><Button onClick={editFalse} className="border-0 bg-transparent" variant="none" style={{color: "white"}}>Add</Button></Link>) :(<></>) }
           </Nav>
           <Nav>
           { auth ? <Button variant="dark" style={{marginRight:"3rem"}} onClick={logOut}>

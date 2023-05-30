@@ -24,6 +24,7 @@ const TheProductList = () => {
       { loadProducts ? (<Spinner animation="border" variant="danger" />) : products.length === 0 ? (
       <h2>There's no product</h2> 
       ) : ( products.map((el)=> <TheProductCard key={el._id} product={el} /> ) ) }
+    
     </div>
     </>
   )
